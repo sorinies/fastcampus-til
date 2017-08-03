@@ -1,0 +1,31 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.container {
+	display: flex;
+	background-color: #ddd;
+}
+.container-inline {
+	display: inline-flex;
+	width: 500px;
+	background-color: #ddd;
+	overflow: auto;
+}
+.inline {
+	display: inline;
+	width: 800px;
+}
+.item {
+	-webkit-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.14);
+	-moz-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.14);
+	box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.14);
+	background-color: #3aad21;
+	padding: 30px;
+	margin: 5px;
+}
+.item span {
+	font-size: 1em;
+	color: #fff;
+}
