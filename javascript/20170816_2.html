@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- 바닐라 자바스크립트 -->
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            div {
+                width: 100px;
+                height: 100px;
+                background-color: #f00;
+            }
+            .blue {
+                background-color: #00f;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Vanilla Javascript</h1>
+        <h2>#box에 마우스를 올렸을 때 색상이 변하고 #box 영역에서 마우스 커서가 벗어났을 때 원상복귀</h2>
+        <div id="box"></div>
+        <script>
+            var elem = document.getElementById('box');
+            elem.addEventListener('mouseover', function() {
+                this.className = "blue";
+            })
+            elem.addEventListener('mouseout', function() {
+                this.className = "";
+            })
+        </script>
+
+        <h2>더하기 문제 정답 확인</h2>
+        <form>
+            <input type="number" name="front" id="front"> +
+            <input type="number" name="back" id="back"> =
+            <input type="number" name="answer" id="answer">
+            <button id="confirm">확인</button>
+        </form>
+        <script>
+            var confirm = document.getElementById('confirm');
+            confirm.addEventListener('click', function(e) {
+                // 각각의 input에 담긴 내용을 정수형으로 변환해 별도의 변수에 대입.
+                var front = parseInt(document.getElementById('front').value);
+                var back = parseInt(document.getElementById('back').value);
+                var answer = parseInt(document.getElementById('answer').value);
+                e.preventDefault();
+                return answer == (front + back) ? alert('정답') : alert('오답');
+            })
+        </script>
+    </body>
+</html>
