@@ -10,17 +10,22 @@ toWeirdCase함수는 문자열 s를 매개변수로 입력받는다.
 */
 
 function toWeirdCase(s) {
-    var splitText = s.split(''); // 입력받은 텍스트를 문자 단위로 분할해 배열로 저장한다.
-    for (var i = 0; i < splitText.length; i++) { 
-        if (i % 2 == 0 && splitText[i] != ' ') { // 배열의 index가 0을 포함한 짝수이고, 공백 문자가 아닐때에만 아래 구문을 실행.
-            splitText[i] = splitText[i].toUpperCase();
+    var splitWord = s.split(' '); // 입력받은 텍스트를 공백문자 단위로 분할해 배열로 저장한다.
+    for (var i = 0; i < splitWord.length; i++) { 
+        var splitText = splitWord[i].split(''); // 분리된 각 배열을 문자 단위로 분할해 배열로 저장한다.
+        for (var j = 0; j < splitText.length; j++) {
+            if (j % 2 == 0) { // 0을 포함한 짝수번째의 순서에 해당하는 문자만 아래 구문을 실행한다.
+                splitText[j] = splitText[j].toUpperCase();
+            }
         }
+        splitWord[i] = splitText.join(''); // 변환이 완료된 단어는 단어별 분리된 배열에 저장한다.
     }
-    return splitText.join(''); // 배열로 분리된 텍스트를 구분 문자 없이 붙혀서 문자열로 반환한다.
+    return splitWord.join(' '); // 분리된 단어를 공백문자로 구분해 문자열로 만들어 반환한다.
 }
 console.log('6. 이상한 문자 만들기');
 console.log(toWeirdCase('try hello world')); // 'TrY HeLlO WoRlD'
-
+console.log(toWeirdCase('hello world')); // 'HeLlO WoRlD'
+console.log(toWeirdCase('my name is lee')); //
 
 /*
 # 7. 핸드폰번호 가리기
@@ -33,8 +38,7 @@ console.log(toWeirdCase('try hello world')); // 'TrY HeLlO WoRlD'
 function hideNumbers(str){
     var hideNum = str.substring(0, str.length - 4); // 입력받은 전체 문자열 중, 마지막 네 자리를 제외하고 변수에 담는다.
     hideNum = hideNum.replace(/\d/g, "*"); // 마지막 네 자리를 제외하고 담은 변수의 문자열을 모두 *로 변경한다.
-    var visNum = str.substring(str.length - 4, str.length); // 변경되지 않을 문자열을 별도의 변수에 담는다.
-    return hideNum.concat("", visNum); // 가려진 문자열과 가려지지 않은 문자열을 구분 문자 없이 이어 반환한다.
+    return hideNum.concat("", str.substring(str.length - 4, str.length)); // 가려진 문자열과 가려지지 않은 문자열을 구분 문자 없이 이어 반환한다.
 }
 
 console.log('\n7. 핸드폰 번호 가리기');
@@ -70,11 +74,7 @@ waterMelon 함수는 정수 n을 매개변수로 입력받는다.
 function waterMelon(n){
     var stackText = ''; // 반환할 문자열을 담을 변수를 만든다.
     for (var i = 0; i < n; i++) { // 입력받은 정수만큼 반복
-        if (i % 2 == 0) { // 짝수인 경우에는 '수'를 변수에 더하고, 이외에는 '박'에 더한다.
-            stackText += '수';
-        } else {
-            stackText += '박';
-        }
+        stackText += (i % 2) ? '박' : '수' // 짝수인 경우에는 '수'를 변수에 더하고, 이외에는 '박'에 더한다. (0 == false)
     }
     return stackText;
 }
@@ -93,7 +93,7 @@ n이 임의의 정수 x의 제곱이라면 x+1의 제곱을 리턴하고, n이 �
 */
 
 function nextSquare(n){
-    if (2 <= Math.sqrt(n)) { // 제곱근이 정수인 경우를 판별한다.
+    if (Number.isInteger(Math.sqrt(n))) { // 제곱근이 정수인 경우를 판별한다.
         return Math.pow(Math.sqrt(n) + 1, 2)
     } else {
         return 'no'
@@ -103,3 +103,11 @@ function nextSquare(n){
 console.log('\n10.정수제곱근 판별하기');
 console.log(nextSquare(3));   // no
 console.log(nextSquare(121)); // 144
+console.log(nextSquare());    // no
+console.log(nextSquare(0));   // 1
+console.log(nextSquare(1));   // 4
+console.log(nextSquare(2));   // no
+console.log(nextSquare(3));   // no
+console.log(nextSquare(121)); // 144
+console.log(nextSquare(165)); // no
+console.log(nextSquare(400)); // 441
