@@ -4,14 +4,14 @@
 */
 
 function getMaxValueFromArray(array) {
-    array.sort(function (a, b) { return b - a; }); // 배열 내림차순 정렬.
-    return array[0]; // 정렬 이후 반환하는 것은 가장 큰 수
+  array.sort(function (a, b) { return b - a; }); // 배열 내림차순 정렬.
+  return array[0]; // 정렬 이후 반환하는 것은 가장 큰 수
 }
 console.log(getMaxValueFromArray([3, 6, -2, -5, 7, 3])); // 7
 
 function getMinValueFromArray(array) {
-    array.sort(); 
-    return array[0];
+  array.sort(); 
+  return array[0];
 }
 console.log(getMinValueFromArray([3, 6, -2, -5, 7, 3])); // -5
 
@@ -23,11 +23,11 @@ console.log(getMinValueFromArray([3, 6, -2, -5, 7, 3])); // -5
 */
 
 function sumDivisor(num) {
-    var result = 0;
-    for (var i = 0; i <= num; i++) {
-        result += num % i == 0 ? i : 0;
-    }
-    return result
+  var result = 0;
+  for (var i = 0; i <= num; i++) {
+    result += num % i == 0 ? i : 0; // 입력받은 수 이하의 수의 나머지 값을 차례대로 구하고 그 값이 0일 때 결과에 더한다.
+  }
+  return result;
 }
 
 console.log(sumDivisor(12)); // 28

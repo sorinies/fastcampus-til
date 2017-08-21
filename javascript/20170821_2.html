@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta lang="ko">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>checkbox</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="row">
+      <h3>Checked된 checkbox의 수를 alert으로 표시하는 버튼과 모든 체크박스를 on/off로 토글하는 버튼</h3>
+      <form name="exForm1">
+        <div class="exam-1">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="myCheck" value="option1" />Option 1
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="myCheck" value="option2" />Option 2
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="myCheck" value="option3" />Option 3
+            </label>
+          </div>
+        </div>
+        <button id="counter" class="btn btn-default">Checked된 checkbox의 수</button>
+        <button id="toggle" class="btn btn-default">toggle</button>
+      </form>
+    </div>
+
+    <div class="row" style="margin-top: 20px;">
+      <h3>약관 동의가 체크되지 않았을 때, alert으로 약관 동의를 요구</h3>
+      <form name="exForm2">
+        <div class="exam-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex officiis necessitatibus voluptate quae perspiciatis voluptatem iste placeat rem molestias! Ipsam temporibus id vitae, sed voluptate deleniti totam incidunt et nobis?</p>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="termAgree">약관 동의
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex officiis necessitatibus voluptate quae perspiciatis voluptatem iste placeat rem molestias! Ipsam temporibus id vitae, sed voluptate deleniti totam incidunt et nobis?</p>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="termAgree">약관 동의
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button id="agree-all" class="btn btn-default">모두 동의</button>
+        <button id="confirm" class="btn btn-default">확인</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var btnCount = document.getElementById('counter');
+      var btnToggle = document.getElementById('toggle');
+      var btnAgreeAll = document.getElementById('agree-all');
+      var checkConfirm = document.getElementById('confirm');
+
+      var isChecked = false;
+
+      // Checked된 checkbox의 수를 alert으로 표시
+      btnCount.addEventListener('click', function(e) {
+        var cnt = 0;
+        for (var i = 0; i < exForm1.myCheck.length; i++) {
+          if (exForm1.myCheck[i].checked) cnt++;
+        }
+        alert(cnt);
+        e.preventDefault();
+      });
+
+      // 모든 체크박스를 on/off로 토글
+      btnToggle.addEventListener('click', function(e) {
+        if (isChecked == false) {
+          for (var i = 0; i < exForm1.myCheck.length; i++) {
+            exForm1.myCheck[i].checked = true;
+            isChecked = true;
+          }
+        } else {
+          for (var i = 0; i < exForm1.myCheck.length; i++) {
+            exForm1.myCheck[i].checked = false;
+            isChecked = false;
+          }
+        }
+        e.preventDefault();
+      });
+      
+      // 모든 약관 동의 체크박스를 토글
+      btnAgreeAll.addEventListener('click', function(e) {
+        for (var i = 0; i < exForm2.termAgree.length; i++) {
+          exForm2.termAgree[i].checked = true;
+        }
+        e.preventDefault();
+      })
+
+      // 약관 동의가 모두 체크되지 않았을 때, alert으로 약관 동의를 요구
+      checkConfirm.addEventListener('click', function(e) {
+        var checkedCount = 0;
+        for (var i = 0; i < exForm2.termAgree.length; i++) {
+          if (exForm2.termAgree[i].checked == true) checkedCount++;
+        }
+        checkedCount == exForm2.termAgree.length ? alert('ㅇㅋ') : alert('약관에 동의해주세요');
+        e.preventDefault();
+      })
+    }());
+  </script>
+</body>
+</html>
