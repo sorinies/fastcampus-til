@@ -93,8 +93,9 @@ n이 임의의 정수 x의 제곱이라면 x+1의 제곱을 리턴하고, n이 �
 */
 
 function nextSquare(n){
-    if (Number.isInteger(Math.sqrt(n))) { // 제곱근이 정수인 경우를 판별한다.
-        return Math.pow(Math.sqrt(n) + 1, 2)
+    var radicalRoot = Math.sqrt(n);
+    if (Number.isInteger(radicalRoot)) { // 제곱근이 정수인 경우를 판별한다.
+        return Math.pow(radicalRoot + 1, 2)
     } else {
         return 'no'
     }
