@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Slide image</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class=container>
+    <div class="row">
+      <h2>1. 버튼을 클릭하면 이미지를 좌측으로 슬라이드</h2>
+      <h2>2. 3초마다 이미지를 좌측으로 슬라이드</h2>
+      <h2>3. 자동 슬라이드 토글</h2>
+      <p>* ES6를 사용하여 작성할 것!</p>
+
+      <img id="img-1" src="http://placehold.it/350x250/abc?text=img1" class="slide_img" alt="">
+      <img id="img-2" src="http://placehold.it/350x250/bca?text=img2" class="slide_img" alt="">
+      <img id="img-3" src="http://placehold.it/350x250/cba?text=img3" class="slide_img" alt="">
+      <div style="margin-top: 10px;">
+        <button class="btn btn-success" id="btn">slide image</button>
+        <button class="btn btn-success" id="btn-toggle">Toggle slide Interval</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const slide = document.querySelectorAll('.slide_img');
+      let imgSrcArr = [];
+      
+      for (var i = 0; i < slide.length; i++) { // nodelist 각 요소의 src를 array에 대입.
+        imgSrcArr.push(slide[i].src);
+      }
+      function slideAction() { 
+        imgSrcArr.push(imgSrcArr.shift());
+        imgSrcArr.map((x, i) =>  slide[i].src = x);
+      }
+
+      const moveLeft = document.getElementById('btn');
+      const toggleSlide = document.getElementById('btn-toggle');
+      let intervFlag = true; // 토글 상태를 확인하기 위한 변수.
+      let interv = window.setInterval(slideAction, 3000); // 3000ms 마다 slideAction을 실행한다.
+
+      moveLeft.addEventListener('click', slideAction); // btn에 click 이벤트가 일어나면 slideAction을 실행한다.
+      toggleSlide.addEventListener('click', function() { // btn-toggle에 click 이벤트가 일어나면 함수를 실행한다.
+        if (intervFlag == true) {
+          clearInterval(interv); // interv에 등록된 interval을 삭제한다.
+          intervFlag = false;
+        } else if (intervFlag == false) {
+          interv = window.setInterval(slideAction, 3000); // interval 재등록.
+          interv;
+          intervFlag = true;
+        }
+      });
+    }());
+  </script>
+</body>
+
+</html>

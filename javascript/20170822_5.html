@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>fade-in, fade-out effect with css</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <style>
+    h1 {
+      text-align: center;
+    }
+    .btn_box {
+    }
+    .radio-inline {
+      padding: 16px 40px ;
+      background-color: #333;
+      color: #fff;
+    }
+    .radio-inline + input[type=radio] {
+      display: none;
+    }
+    #inlineRadio1:checked + label + input + .box {
+      opacity: 1;
+    }
+    #inlineRadio2:checked + .box {
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #f00;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>fade-in, fade-out effect with css</h1>
+    <div class="btn_box">
+      <label class="radio-inline" for="inlineRadio1">Fade-in</label>
+      <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+      <label class="radio-inline" for="inlineRadio2">Fade-out</label>
+      <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+      <div class="box">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

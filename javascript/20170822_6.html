@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>fade-in, fade-out effect with jQuery</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <style>
+    h1 {
+      text-align: center;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #f00;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .active {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>fade-in, fade-out effect with jQuery</h1>
+    <div class="btn_box">
+      <button class="btn btn-primary fadein">Fade-in</button>
+      <button class="btn btn-primary fadeout">Fade-out</button>
+      <div class="box">
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+    $('.fadein').click(function(){
+      $('.box').addClass('active');
+    });
+    $('.fadeout').click(function(){
+      $('.box').removeClass('active');
+    });
+  </script>  
+</body>
+
+</html>
