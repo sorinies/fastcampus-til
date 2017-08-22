@@ -46,7 +46,20 @@ x와 y가 같은 경우는 둘 중 아무 수나 리턴한다. x, y는 음수나
 */
 
 function adder(x, y){
-
+  var result = 0;
+  if (x < y) { // x보다 y가 큰 경우
+    for (var i = x; i <= y; i++) {
+      result += i;
+    }
+    return result;
+  } else if (y < x) { // y보다 x가 큰 경우
+    for (var i = y; i <= x; i++) {
+      result += i;
+    }
+    return result;
+  } else {
+    return Math.random() < 0.5 ? x : y;
+  }
 }
 
 console.log(adder(3, 5)); // 12
@@ -54,3 +67,4 @@ console.log(adder(14, 2)); // 104
 console.log(adder(-5, -2)); // -14
 console.log(adder(-3, 0)); // -6
 console.log(adder(-3, 3)); // 0
+console.log(adder(3, 3)); // 3 or 3
