@@ -1,0 +1,9 @@
+.add-form {
+  padding-top: 30px;
+  max-height: 0;
+  overflow-y: hidden;
+  transition: max-height 0.3s;
+}
+.add-form.active {
+  max-height: 300px;
+}

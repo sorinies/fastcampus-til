@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Book</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 class="display-4">Book List</h1>
+      <form id="needs-validation">
+        <table class="table table-striped" id="myTable">
+          <thead>
+            <tr>
+              <th>
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" id="checkAll">
+                </label>
+              </th>
+              <th>#</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody id="bookListBody">
+
+          </tbody>
+        </table>
+        <div class="btn-group" id="btnGroup" role="group">
+          <button type="button" class="btn btn-danger" id="delte">Delete Book</button>
+          <button type="button" class="btn btn-success" id="add">Add Book</button>
+        </div>
+        <div class="add-form">
+          <div class="form-group">
+            <label for="formTitle" class="required">Title</label>
+            <input type="text" class="form-control" id="formTitle" placeholder="Enter Title" required>
+            <div class="invalid-feedback">
+              Please provide a Book Title.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="formAuthor">Author</label>
+            <input type="text" class="form-control" id="formAuthor" placeholder="Enter Author">
+          </div>
+          <div class="form-group">
+            <label for="formPrice">Price</label>
+            <input type="text" class="form-control" id="formPrice" placeholder="Enter Price">
+          </div>
+        </div>
+      </form>
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="js/data_booklist.js"></script>
+    <script src="js/common.js"></script>
+  </body>
+</html>
